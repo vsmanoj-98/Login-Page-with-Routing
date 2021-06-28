@@ -8,12 +8,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Select from 'react-select';
 
 const actions = [
-  { label: "Btech", value: 1 },
-  { label: "Mtech", value: 2 },
-  { label: "Degree", value: 3 }
+    { label: "Btech", value: 1 },
+    { label: "Mtech", value: 2 },
+    { label: "Degree", value: 3 }
 ];
 
-class Radio1 extends React.Component {
+class RadioComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,19 +28,23 @@ class Radio1 extends React.Component {
     changeState() {
         this.setState({ name: 'sai' });
     }
+    logout() {
+        this.props.history.push('/welcome');
+    }
     render() {
         return (
             <div className="App">
+                <input type="button" value="Back" onClick={this.logout.bind(this)} />
                 <div className="container">
-                <div className="row">
-                    name :{this.state.name}<br />
-                    <div className="col-sm-3">
-                    <button onClick={this.changeState.bind(this)} >Update State</button><br/>
-                    </div>
-                </div><br/>
-                 <div className="row">
+                    <div className="row">
+                        name :{this.state.name}<br />
                         <div className="col-sm-3">
-                        <FormControl component="fieldset">
+                            <input type="button" value="Update State" onClick={this.changeState.bind(this)} /><br />
+                        </div>
+                    </div><br />
+                    <div className="row">
+                        <div className="col-sm-3">
+                            <FormControl component="fieldset">
                                 <FormLabel component="legend"><b>Gender</b></FormLabel>
                                 <RadioGroup aria-label="gender" name="gender1">
                                     <FormControlLabel value="female" control={<Radio />} label="Female" />
@@ -50,12 +54,12 @@ class Radio1 extends React.Component {
                             </FormControl>
                         </div>
                         <div className="col-sm-6">
-                        <Select options={actions}/>
+                            <Select options={actions} />
                         </div>
-                    </div>         
-                 </div>
+                    </div>
+                </div>
             </div>
         );
     }
 }
-export default Radio1;
+export default RadioComponent;
